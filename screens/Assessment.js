@@ -153,6 +153,7 @@ const Assessment = ({navigation}) => {
             />
           </View>
         </View>
+
         <View style={{alignItems: 'center', marginTop: 16}}>
           <Text style={styles.bodyText}>Detect clusters?</Text>
           <CheckBox
@@ -162,6 +163,7 @@ const Assessment = ({navigation}) => {
             style={{textAlign: 'center'}}
           />
         </View>
+
         <View style={{alignItems: 'center', marginTop: 16}}>
           <Text style={styles.bodyText}>Weight</Text>
           <TextInput
@@ -171,6 +173,7 @@ const Assessment = ({navigation}) => {
             onChangeText={value => setWeight(value)}
           />
         </View>
+
         <View style={{alignItems: 'center', marginTop: 16}}>
           {/* <CustomButton
             // onPress={submitForm}
