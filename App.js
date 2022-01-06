@@ -6,7 +6,7 @@ import LoginScreen from './screens/Login';
 import Dimension from './screens/Dimension';
 import ResultScreen from './screens/Result';
 import Assessment from './screens/Assessment';
-import Dimension from './screens/Dimension';
+import DimensionResult from './screens/DimensionResult';
 
 const AuthStack = createStackNavigator();
 
@@ -37,6 +37,11 @@ const App = () => {
         <AuthStack.Screen
           name="Result"
           component={ResultScreen}
+          options={{headerShown: false}}
+        />
+        <AuthStack.Screen
+          name="DimensionResult"
+          component={DimensionResult}
           options={{headerShown: false}}
         />
       </AuthStack.Navigator>

@@ -81,9 +81,9 @@ const Dimension = ({navigation}) => {
         requestOptions,
       );
       const json = await response.json();
-      alert(json);
+      // console.log(json);
       onRefresh();
-      //   navigation.navigate('Result', json);
+      navigation.navigate('DimensionResult', json);
     } catch (error) {
       alert(error);
     }

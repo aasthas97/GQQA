@@ -43,7 +43,6 @@ const ResultScreen = ({route, navigation}) => {
           />
         </View>
       </View>
-      {/* <Footer /> */}
     </View>
   );
 };
