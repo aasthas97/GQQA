@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import Header from '../components/Header';
 import Form from '../components/Form';
-import Footer from '../components/Footer';
 import GlobalStyle from '../utils/Style';
 
 const LoginScreen = ({navigation}) => {

@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import UserHome from './screens/UserHome';
 import LoginScreen from './screens/Login';
+import Dimension from './screens/Dimension';
 import ResultScreen from './screens/Result';
 import Assessment from './screens/Assessment';
 
@@ -20,6 +21,11 @@ const App = () => {
         <AuthStack.Screen
           name="Home"
           component={UserHome}
+          options={{headerShown: false}}
+        />
+        <AuthStack.Screen
+          name="Dimension"
+          component={Dimension}
           options={{headerShown: false}}
         />
         <AuthStack.Screen

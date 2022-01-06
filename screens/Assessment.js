@@ -26,6 +26,7 @@ const Assessment = ({navigation}) => {
   function chooseFromGallery() {
     launchImageLibrary({noData: true}, response => {
       if (response) {
+        // console.log(response);
         setImage(response);
       }
     });
@@ -34,6 +35,7 @@ const Assessment = ({navigation}) => {
   function takePhotoFromCamera() {
     launchCamera({noData: true}, response => {
       if (response) {
+        // console.log(response);
         setImage(response);
       }
     });
