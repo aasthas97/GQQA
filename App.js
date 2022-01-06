@@ -6,6 +6,7 @@ import LoginScreen from './screens/Login';
 import Dimension from './screens/Dimension';
 import ResultScreen from './screens/Result';
 import Assessment from './screens/Assessment';
+import Dimension from './screens/Dimension';
 
 const AuthStack = createStackNavigator();
 
