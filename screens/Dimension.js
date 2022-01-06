@@ -41,7 +41,6 @@ const Dimension = ({navigation}) => {
     setTimeout(() => {
       setRefreshing(false);
       setLoading(false);
-      console.log(dpi);
     }, 1000);
   });
 
@@ -53,7 +52,7 @@ const Dimension = ({navigation}) => {
     }
   }
 
-  const submitForm = () => {
+  const submitForm = async () => {
     setLoading(true);
     const data = new FormData();
     data.append('image', {
@@ -76,16 +75,18 @@ const Dimension = ({navigation}) => {
       body: data,
     };
 
-    alert('Form submission successful');
-
-    // try {
-    //   const response = await fetch('http://10.0.2.2:8000/', requestOptions);
-    //   const json = await response.json();
-    //   // console.log(json);
-    //   navigation.navigate('Result', json);
-    // } catch (error) {
-    //   alert(error);
-    // }
+    try {
+      const response = await fetch(
+        'http://10.0.2.2:8000/dimension/',
+        requestOptions,
+      );
+      const json = await response.json();
+      alert(json);
+      onRefresh();
+      //   navigation.navigate('Result', json);
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
