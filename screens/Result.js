@@ -1,7 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, ScrollView} from 'react-native';
-import {Table, Row, Rows} from 'react-native-table-component';
-import GlobalStyle from '../utils/Style';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {Table, Row} from 'react-native-table-component';
 
 const ResultScreen = ({route}) => {
   const grainCount = route.params['grain count'];
@@ -18,23 +17,37 @@ const ResultScreen = ({route}) => {
   }
 
   return (
-    <ScrollView>
-      <Text style={GlobalStyle.headingText}>Assessment Result</Text>
-      <View style={{marginTop: 20}}>
-        <Text style={styles.bodyText}>Grain Count: {grainCount}</Text>
-        <Text style={styles.bodyText}>Thousand Grain Weight: {thousandGW}</Text>
-      </View>
-      {/* <FlatList
-        data={categoryPercent}
-        renderItem={({item}) => (
-          <View>
-            <Text style={styles.bodyText}>
-              {item.category}: {item.percentage}%
-            </Text>
-          </View>
-        )}
-      /> */}
-      <Table style={{marginTop: 20}}>
+    <ScrollView style={{backgroundColor: 'white'}}>
+      <Table style={{marginTop: '15%'}}>
+        <Row
+          data={['Grain Count', 'Thousand Grain Weight']}
+          flexArr={[1, 2]}
+          textStyle={{
+            textAlign: 'center',
+            padding: 5,
+            paddingBottom: 10,
+            color: 'black',
+            fontWeight: '600',
+          }}
+          style={{
+            backgroundColor: '#eae9e9',
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
+          }}
+        />
+        <Row
+          data={[grainCount, thousandGW]}
+          flexArr={[1, 1.5]}
+          textStyle={{
+            textAlign: 'center',
+            padding: 5,
+            paddingBottom: 10,
+            color: 'black',
+            fontWeight: '600',
+          }}
+        />
+      </Table>
+      <Table style={{marginTop: 40}}>
         <Row
           data={['Grain', 'Classification']}
           flexArr={[1.5, 2]}
@@ -43,31 +56,31 @@ const ResultScreen = ({route}) => {
             padding: 5,
             paddingBottom: 10,
             color: 'black',
+            fontWeight: '600',
+          }}
+          style={{
+            backgroundColor: '#eae9e9',
+            borderTopWidth: 1,
+            borderBottomWidth: 1,
           }}
         />
-        <Rows data={tableData} flexArr={[1.5, 2]} style={{height: 28}} />
+        {tableData.map((rowData, index) => (
+          <Row
+            key={index}
+            data={rowData}
+            flexArr={[1.5, 2]}
+            style={[styles.row, index % 2 && {backgroundColor: '#eae9e9'}]}
+            textStyle={styles.text}
+          />
+        ))}
       </Table>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  bodyHeading: {
-    fontSize: 26,
-    color: 'black',
-    fontWeight: '400',
-    fontFamily: 'monospace',
-  },
-  bodyText: {
-    fontSize: 18,
-    color: 'black',
-    lineHeight: 30,
-    fontWeight: '400',
-  },
-
-  resultList: {
-    marginVertical: 20,
-  },
+  row: {height: 32},
+  text: {textAlign: 'center', fontWeight: '400', color: 'black'},
 });
 
 export default ResultScreen;

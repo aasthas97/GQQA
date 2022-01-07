@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import {Table, Row, Rows} from 'react-native-table-component';
+import {Table, Row} from 'react-native-table-component';
 
 export default DimensionResult = ({route}) => {
   const lengths = route.params['Length'];
