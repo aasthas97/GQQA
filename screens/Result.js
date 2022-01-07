@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, ScrollView} from 'react-native';
 import {Table, Row, Rows} from 'react-native-table-component';
 import GlobalStyle from '../utils/Style';
 
-const ResultScreen = ({route, navigation}) => {
+const ResultScreen = ({route}) => {
   const grainCount = route.params['grain count'];
   const thousandGW =
     route.params['thousand gw'] == -1
@@ -11,33 +11,43 @@ const ResultScreen = ({route, navigation}) => {
       : route.params['thousand gw'].toFixed(2);
   const categoryPercent = route.params['percent'];
   const classification = route.params['labels'];
-  // console.log(route.params);
+  let tableData = [];
+
+  for (let i = 0; i < classification.length; i++) {
+    tableData.push([i, classification[i]]);
+  }
 
   return (
-    <View style={GlobalStyle.container}>
-      <View style={GlobalStyle.body}>
-        <Text style={GlobalStyle.headingText}>Assessment Result</Text>
-        <View style={{marginTop: 20}}>
-          <Text style={styles.bodyText}>Grain Count: {grainCount}</Text>
-          <Text style={styles.bodyText}>
-            Thousand Grain Weight: {thousandGW}
-          </Text>
-        </View>
-        <View style={styles.resultList}>
-          <Text style={styles.bodyHeading}>Classification</Text>
-          <FlatList
-            data={categoryPercent}
-            renderItem={({item}) => (
-              <View>
-                <Text style={styles.bodyText}>
-                  {item.category}: {item.percentage}%
-                </Text>
-              </View>
-            )}
-          />
-        </View>
+    <ScrollView>
+      <Text style={GlobalStyle.headingText}>Assessment Result</Text>
+      <View style={{marginTop: 20}}>
+        <Text style={styles.bodyText}>Grain Count: {grainCount}</Text>
+        <Text style={styles.bodyText}>Thousand Grain Weight: {thousandGW}</Text>
       </View>
-    </View>
+      {/* <FlatList
+        data={categoryPercent}
+        renderItem={({item}) => (
+          <View>
+            <Text style={styles.bodyText}>
+              {item.category}: {item.percentage}%
+            </Text>
+          </View>
+        )}
+      /> */}
+      <Table style={{marginTop: 20}}>
+        <Row
+          data={['Grain', 'Classification']}
+          flexArr={[1.5, 2]}
+          textStyle={{
+            textAlign: 'center',
+            padding: 5,
+            paddingBottom: 10,
+            color: 'black',
+          }}
+        />
+        <Rows data={tableData} flexArr={[1.5, 2]} style={{height: 28}} />
+      </Table>
+    </ScrollView>
   );
 };
 
