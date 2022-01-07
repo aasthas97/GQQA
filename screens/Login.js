@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
   Alert,
   ScrollView,
-  KeyboardAvoidingView,
+  StyleSheet,
+  TextInput,
+  Pressable,
 } from 'react-native';
-import Header from '../components/Header';
-import Form from '../components/Form';
-import GlobalStyle from '../utils/Style';
 
 const LoginScreen = ({navigation}) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   const loginAuthenticate = (username, password) => {
     if (username == '' || password == '') {
       Alert.alert('Please fill all fields');
@@ -22,29 +24,85 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <View style={GlobalStyle.container}>
-      <ScrollView style={{width: '100%'}}>
-        <Header signedIn={false} headerHeight={'16%'} />
-        <Text style={GlobalStyle.headingText}>
-          Grain Quality and Quantity Analyzer
-        </Text>
-        <Text
-          style={{
-            color: 'black',
-            fontSize: 30,
-            textAlign: 'center',
-            marginTop: '5%',
-          }}>
+    <ScrollView style={{backgroundColor: 'white', height: '100%'}}>
+      {/* <View
+        style={{
+          marginTop: '15%',
+          marginLeft: '88%',
+          height: 100,
+          width: 100,
+          borderRadius: 50,
+          backgroundColor: '#eae9e9',
+        }}
+      /> */}
+      <View style={{marginTop: '50%', marginLeft: '10%'}}>
+        <Text style={{color: 'black', fontWeight: '700', fontSize: 40}}>
           Login
         </Text>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-          <Form onClick={loginAuthenticate} />
-        </KeyboardAvoidingView>
-      </ScrollView>
-      {/* <Footer /> */}
-    </View>
+        <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
+          Please sign in to continue
+        </Text>
+      </View>
+      <View
+        style={{
+          // borderWidth: 2,
+          marginTop: '10%',
+          marginLeft: '10%',
+          marginRight: '10%',
+        }}>
+        <TextInput
+          placeholder="Username"
+          onChangeText={value => setUsername(value)}
+          style={{
+            borderWidth: 4,
+            borderColor: '#eae9e9',
+            borderRadius: 10,
+            marginVertical: 10,
+            paddingLeft: 10,
+          }}
+        />
+        <TextInput
+          placeholder="Password"
+          secureTextEntry={true}
+          onChangeText={value => setPassword(value)}
+          style={{
+            borderWidth: 4,
+            borderColor: '#eae9e9',
+            borderRadius: 10,
+            marginVertical: 10,
+            paddingLeft: 10,
+          }}
+        />
+      </View>
+      <Pressable
+        style={{
+          marginTop: '15%',
+          marginLeft: '50%',
+          marginRight: '10%',
+          backgroundColor: '#eae9e9',
+          borderRadius: 10,
+          paddingVertical: 10,
+        }}
+        onPress={() => {
+          loginAuthenticate(username, password);
+        }}>
+        <Text
+          style={{
+            color: '#2e2e2e',
+            fontWeight: 'bold',
+            fontSize: 20,
+            textAlign: 'center',
+          }}>
+          LOGIN
+        </Text>
+      </Pressable>
+    </ScrollView>
   );
 };
 
+const styles = StyleSheet.create({
+  body: {
+    margin: 1,
+  },
+});
 export default LoginScreen;
