@@ -1,11 +1,28 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {Card, Paragraph} from 'react-native-paper';
+import {Card, Paragraph, Avatar} from 'react-native-paper';
 
 const UserHome = ({navigation}) => {
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
-      <View style={{marginTop: '20%', marginLeft: '10%'}}>
+      {/* <View
+        style={{
+          backgroundColor: 'white',
+          height: '10%',
+          flexDirection: 'row-reverse',
+        }}>
+        <Avatar.Icon
+          size={45}
+          color="black"
+          icon="logout-variant"
+          style={{
+            marginTop: 20,
+            marginRight: '10%',
+            backgroundColor: 'white',
+          }}
+        />
+      </View> */}
+      <View style={{marginTop: '10%', marginLeft: '10%'}}>
         <Text style={{color: 'black', fontWeight: '500', fontSize: 35}}>
           Welcome!
         </Text>

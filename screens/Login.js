@@ -25,16 +25,6 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <ScrollView style={{backgroundColor: 'white', height: '100%'}}>
-      {/* <View
-        style={{
-          marginTop: '15%',
-          marginLeft: '88%',
-          height: 100,
-          width: 100,
-          borderRadius: 50,
-          backgroundColor: '#eae9e9',
-        }}
-      /> */}
       <View style={{marginTop: '50%', marginLeft: '10%'}}>
         <Text style={{color: 'black', fontWeight: '700', fontSize: 40}}>
           Login
