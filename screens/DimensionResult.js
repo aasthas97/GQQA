@@ -15,8 +15,8 @@ export default DimensionResult = ({route}) => {
   }
 
   return (
-    <ScrollView style={{backgroundColor: '#fff'}}>
-      <Table style={{marginTop: 20}}>
+    <ScrollView style={{backgroundColor: 'white'}}>
+      <Table style={{marginTop: '20%'}}>
         <Row
           data={['Grain', 'Length', 'Breadth', 'Perimeter', 'Area']}
           flexArr={[1.5, 2, 2, 2, 2]}
@@ -25,20 +25,24 @@ export default DimensionResult = ({route}) => {
             padding: 5,
             paddingBottom: 10,
             color: 'black',
+            fontWeight: '600',
           }}
         />
-        <Rows
-          data={tableData}
-          flexArr={[1.5, 2, 2, 2, 2]}
-          style={styles.row}
-          textStyle={styles.text}
-        />
+        {tableData.map((rowData, index) => (
+          <Row
+            key={index}
+            data={rowData}
+            flexArr={[1.5, 2, 2, 2, 2]}
+            style={[styles.row, index % 2 && {backgroundColor: '#eae9e9'}]}
+            textStyle={styles.text}
+          />
+        ))}
       </Table>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  row: {height: 28},
-  text: {textAlign: 'center'},
+  row: {height: 32},
+  text: {textAlign: 'center', fontWeight: '400', color: 'black'},
 });
