@@ -156,11 +156,18 @@ const Assessment = ({navigation}) => {
             Gallery
           </Button>
         </View>
+        <HelperText
+          type="info"
+          visible={image !== undefined}
+          padding="none"
+          style={{fontSize: 12, color: 'black', marginLeft: 0}}>
+          Image selected successfully!
+        </HelperText>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            marginTop: '12%',
+            marginTop: '10%',
           }}>
           <Text
             style={{

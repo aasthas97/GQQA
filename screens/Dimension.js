@@ -145,6 +145,13 @@ const Dimension = ({navigation}) => {
             Gallery
           </Button>
         </View>
+        <HelperText
+          type="info"
+          visible={image !== undefined}
+          padding="none"
+          style={{fontSize: 12, color: 'black', marginLeft: 0}}>
+          Image selected successfully!
+        </HelperText>
         <Button
           icon="arrow-right-circle-outline"
           loading={isLoading == true ? true : false}
