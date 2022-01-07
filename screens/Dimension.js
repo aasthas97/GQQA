@@ -1,23 +1,12 @@
 import React, {useState, useCallback} from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  ActivityIndicator,
-  RefreshControl,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
+import {View, Text, RefreshControl, ScrollView} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import Header from '../components/Header';
-import CustomButton from '../components/CustomButton';
-import GlobalStyle from '../utils/Style';
+import {Button, HelperText, TextInput} from 'react-native-paper';
 
 const Dimension = ({navigation}) => {
   const [dpi, setDpi] = useState(72);
   const [image, setImage] = useState();
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
 
   function chooseFromGallery() {
@@ -81,7 +70,6 @@ const Dimension = ({navigation}) => {
         requestOptions,
       );
       const json = await response.json();
-      // console.log(json);
       onRefresh();
       navigation.navigate('DimensionResult', json);
     } catch (error) {
@@ -90,103 +78,83 @@ const Dimension = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }>
-        <Header
-          signedIn={true}
-          logOutFunc={() => {
-            navigation.navigate('SignIn');
+    <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+      style={{backgroundColor: 'white'}}>
+      <Text
+        style={{
+          marginTop: '20%',
+          marginLeft: '10%',
+          color: 'black',
+          fontWeight: '500',
+          fontSize: 35,
+        }}>
+        Dimension Analysis
+      </Text>
+      <View style={{marginTop: '10%', marginHorizontal: '10%'}}>
+        <TextInput
+          mode="flat"
+          label="DPI (required)"
+          keyboardType="numeric"
+          activeUnderlineColor="black"
+          onChangeText={value => setDpi(value)}
+          style={{
+            marginVertical: 10,
+            paddingLeft: 10,
+            fontSize: 15,
+            backgroundColor: '#eae9e9',
           }}
         />
         <Text
           style={{
-            fontSize: 30,
-            marginTop: 20,
-            color: '#2F2F2F',
-            fontFamily: 'monospace',
-            textAlign: 'center',
+            marginTop: '15%',
+            fontSize: 22,
+            fontWeight: '500',
+            color: 'black',
           }}>
-          DIMENSION ANALYSIS
+          Image
         </Text>
-        <View style={{marginTop: 30, alignItems: 'center'}}>
-          <Text style={styles.bodyText}>DPI*</Text>
-
-          <TextInput
-            style={GlobalStyle.input}
-            placeholder="DPI"
-            keyboardType="numeric"
-            onChangeText={value => setDpi(value)}
-          />
-        </View>
         <View
           style={{
-            width: '100%',
-            height: '20%',
-            alignItems: 'center',
-            marginTop: 16,
-            marginBottom: 8,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: '7%',
+            height: 70,
           }}>
-          <Text style={styles.bodyText}>Image*</Text>
-          <CustomButton
-            onPress={chooseFromGallery}
-            displayText={'CHOOSE FROM GALLERY'}
-            buttonWidth="70%"
-            buttonHeight="28%"
-            margin={9}
-          />
-
-          <CustomButton
-            onPress={takePhotoFromCamera}
-            displayText={'UPLOAD FROM CAMERA'}
-            buttonWidth="70%"
-            buttonHeight="28%"
-            margin={9}
-          />
+          <Button
+            icon="camera"
+            mode="contained"
+            color="#eae9e9"
+            accessibilityLabel="Take photo from camera"
+            style={{paddingVertical: 8, justifyContent: 'center'}}
+            labelStyle={{fontSize: 15}}
+            onPress={takePhotoFromCamera}>
+            Camera
+          </Button>
+          <Button
+            icon="google-photos"
+            mode="contained"
+            color="#eae9e9"
+            accessibilityLabel="Choose photo from gallery"
+            style={{paddingVertical: 8, justifyContent: 'center'}}
+            labelStyle={{fontSize: 15}}
+            onPress={chooseFromGallery}>
+            Gallery
+          </Button>
         </View>
-
-        <View style={{alignItems: 'center', marginVertical: 15}}>
-          {loading === false ? (
-            <CustomButton
-              onPress={checkForm}
-              displayText={'SUBMIT'}
-              buttonWidth="60%"
-              buttonHeight="25%"
-            />
-          ) : (
-            <ActivityIndicator size={'large'} />
-          )}
-        </View>
-        <View style={{marginTop: 8}}>
-          <Text style={GlobalStyle.headingText}></Text>
-        </View>
-        <View style={{marginTop: 8}}>
-          <Text style={GlobalStyle.headingText}></Text>
-        </View>
-        <View style={{marginTop: 8}}>
-          <Text style={GlobalStyle.headingText}></Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        <Button
+          icon="arrow-right-circle-outline"
+          loading={isLoading == true ? true : false}
+          labelStyle={{fontSize: 50, color: 'black'}}
+          style={{marginTop: '30%', marginLeft: '80%'}}
+          onPress={checkForm}
+        />
+      </View>
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    width: '90%',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-
-  bodyText: {
-    color: 'black',
-    fontSize: 20,
-    fontWeight: '500',
-  },
-});
 
 export default Dimension;
