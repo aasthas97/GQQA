@@ -1,26 +1,20 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
-import Header from '../components/Header';
+import {Table, Row, Rows} from 'react-native-table-component';
 import GlobalStyle from '../utils/Style';
 
 const ResultScreen = ({route, navigation}) => {
-  const logOut = () => {
-    console.log('Signing out..');
-    navigation.navigate('SignIn');
-  };
-
   const grainCount = route.params['grain count'];
   const thousandGW =
     route.params['thousand gw'] == -1
       ? route.params['thousand gw']
       : route.params['thousand gw'].toFixed(2);
-  const categoryPercent = route.params['labels'];
-  // const outputImage = route.params['image'];
+  const categoryPercent = route.params['percent'];
+  const classification = route.params['labels'];
   // console.log(route.params);
 
   return (
     <View style={GlobalStyle.container}>
-      <Header signedIn={true} logOutFunc={logOut} />
       <View style={GlobalStyle.body}>
         <Text style={GlobalStyle.headingText}>Assessment Result</Text>
         <View style={{marginTop: 20}}>
