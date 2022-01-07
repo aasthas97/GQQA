@@ -1,26 +1,14 @@
 import React, {useState, useCallback} from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  ScrollView,
-  SafeAreaView,
-  ActivityIndicator,
-  RefreshControl,
-} from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
+import {View, Text, ScrollView, RefreshControl} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import Header from '../components/Header';
-import CustomButton from '../components/CustomButton';
-import GlobalStyle from '../utils/Style';
+import {Button, HelperText, Switch, TextInput} from 'react-native-paper';
 
 const Assessment = ({navigation}) => {
   const [dpi, setDpi] = useState();
   const [cluster, setCluster] = useState(0);
   const [weight, setWeight] = useState(-1);
   const [image, setImage] = useState();
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
 
   function chooseFromGallery() {
@@ -55,7 +43,6 @@ const Assessment = ({navigation}) => {
   });
 
   function checkForm() {
-    // console.log('check form', loading);
     if (typeof image !== 'undefined' && typeof dpi !== 'undefined') {
       submitForm();
     } else if (typeof image === 'undefined') {
@@ -102,121 +89,117 @@ const Assessment = ({navigation}) => {
   };
 
   return (
-    // <View style={GlobalStyle.container}>
-    <SafeAreaView>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }>
-        <Header signedIn={true} logOutFunc={logOut} />
-
+    <ScrollView
+      contentInsetAdjustmentBehavior="automatic"
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+      style={{backgroundColor: 'white'}}>
+      <Text
+        style={{
+          marginTop: '20%',
+          marginLeft: '10%',
+          color: 'black',
+          fontWeight: '500',
+          fontSize: 35,
+        }}>
+        Quality Analysis
+      </Text>
+      <View style={{marginTop: '10%', marginHorizontal: '10%'}}>
+        <TextInput
+          mode="flat"
+          label="DPI (required)"
+          keyboardType="numeric"
+          activeUnderlineColor="black"
+          onChangeText={value => setDpi(value)}
+          style={{
+            marginVertical: 10,
+            paddingLeft: 10,
+            fontSize: 15,
+            backgroundColor: '#eae9e9',
+          }}
+        />
         <Text
           style={{
-            fontSize: 30,
-            marginTop: 20,
-            marginBottom: 5,
-            color: '#2F2F2F',
-            fontFamily: 'monospace',
-            textAlign: 'center',
+            marginTop: '8%',
+            fontSize: 22,
+            fontWeight: '500',
+            color: 'black',
           }}>
-          ASSESSMENT
+          Image
         </Text>
-        <View style={{marginTop: 30, alignItems: 'center'}}>
-          <Text style={styles.bodyText}>DPI*</Text>
-          <TextInput
-            style={GlobalStyle.input}
-            placeholder="DPI"
-            keyboardType="numeric"
-            onChangeText={value => setDpi(value)}
-          />
-          <View
-            style={{
-              width: '100%',
-              height: '20%',
-              alignItems: 'center',
-              marginTop: 16,
-            }}>
-            <Text style={styles.bodyText}>Image*</Text>
-            <CustomButton
-              onPress={chooseFromGallery}
-              displayText={'CHOOSE FROM GALLERY'}
-              buttonWidth="60%"
-              buttonHeight="65%"
-              margin={7}
-            />
-
-            <CustomButton
-              onPress={takePhotoFromCamera}
-              displayText={'UPLOAD FROM CAMERA'}
-              buttonWidth="60%"
-              buttonHeight="65%"
-              margin={7}
-            />
-          </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: '2%',
+            height: 70,
+          }}>
+          <Button
+            icon="camera"
+            mode="contained"
+            color="#eae9e9"
+            accessibilityLabel="Take photo from camera"
+            style={{paddingVertical: 8, justifyContent: 'center'}}
+            labelStyle={{fontSize: 15}}
+            onPress={takePhotoFromCamera}>
+            Camera
+          </Button>
+          <Button
+            icon="google-photos"
+            mode="contained"
+            color="#eae9e9"
+            accessibilityLabel="Choose photo from gallery"
+            style={{paddingVertical: 8, justifyContent: 'center'}}
+            labelStyle={{fontSize: 15}}
+            onPress={chooseFromGallery}>
+            Gallery
+          </Button>
         </View>
-
-        <View style={{alignItems: 'center', marginTop: 16}}>
-          <Text style={styles.bodyText}>Detect clusters?</Text>
-          <CheckBox
-            disabled={false}
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: '12%',
+          }}>
+          <Text
+            style={{
+              fontSize: 22,
+              fontWeight: '500',
+              color: 'black',
+            }}>
+            Detect clusters?
+          </Text>
+          <Switch
             value={cluster}
             onValueChange={val => setCluster(val)}
-            style={{textAlign: 'center'}}
+            color="black"
           />
         </View>
-
-        <View style={{alignItems: 'center', marginTop: 16}}>
-          <Text style={styles.bodyText}>Weight</Text>
-          <TextInput
-            style={GlobalStyle.input}
-            placeholder="Sample weight (-1 if unknown)"
-            keyboardType="decimal-pad"
-            onChangeText={value => setWeight(value)}
-          />
-        </View>
-
-        <View style={{alignItems: 'center', marginTop: 16}}>
-          {/* <CustomButton
-            // onPress={submitForm}
-            onPress={checkForm}
-            displayText={'SUBMIT'}
-            buttonWidth="40%"
-            buttonHeight="25%"
-          /> */}
-          {loading === false ? (
-            <CustomButton
-              // onPress={submitForm}
-              onPress={checkForm}
-              displayText={'SUBMIT'}
-              buttonWidth="40%"
-              buttonHeight="25%"
-            />
-          ) : (
-            <ActivityIndicator size={'large'} />
-          )}
-        </View>
-        <View style={{marginTop: 8}}>
-          <Text style={GlobalStyle.headingText}></Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        <TextInput
+          mode="flat"
+          label="Weight"
+          placeholder="-1 if unknown"
+          keyboardType="numeric"
+          activeUnderlineColor="black"
+          onChangeText={value => setWeight(value)}
+          style={{
+            marginVertical: '10%',
+            paddingLeft: 10,
+            fontSize: 15,
+            backgroundColor: '#eae9e9',
+          }}
+        />
+      </View>
+      <Button
+        icon="arrow-right-circle-outline"
+        loading={isLoading == true ? true : false}
+        labelStyle={{fontSize: 50, color: 'black'}}
+        style={{marginTop: '2%', marginLeft: '80%'}}
+        onPress={checkForm}
+      />
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    width: '90%',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-
-  bodyText: {
-    color: 'black',
-    fontSize: 20,
-    fontWeight: '500',
-  },
-});
 
 export default Assessment;
