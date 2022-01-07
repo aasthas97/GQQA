@@ -38,7 +38,6 @@ const Assessment = ({navigation}) => {
     setTimeout(() => {
       setRefreshing(false);
       setLoading(false);
-      console.log(dpi);
     }, 1000);
   });
 
@@ -119,6 +118,40 @@ const Assessment = ({navigation}) => {
             backgroundColor: '#eae9e9',
           }}
         />
+        <TextInput
+          mode="flat"
+          label="Weight"
+          placeholder="-1 if unknown"
+          keyboardType="numeric"
+          activeUnderlineColor="black"
+          onChangeText={value => setWeight(value)}
+          style={{
+            marginTop: '5%',
+            paddingLeft: 10,
+            fontSize: 15,
+            backgroundColor: '#eae9e9',
+          }}
+        />
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: '10%',
+          }}>
+          <Text
+            style={{
+              fontSize: 22,
+              fontWeight: '500',
+              color: 'black',
+            }}>
+            Detect clusters?
+          </Text>
+          <Switch
+            value={cluster}
+            onValueChange={val => setCluster(val)}
+            color="black"
+          />
+        </View>
         <Text
           style={{
             marginTop: '8%',
@@ -163,40 +196,6 @@ const Assessment = ({navigation}) => {
           style={{fontSize: 12, color: 'black', marginLeft: 0}}>
           Image selected successfully!
         </HelperText>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: '10%',
-          }}>
-          <Text
-            style={{
-              fontSize: 22,
-              fontWeight: '500',
-              color: 'black',
-            }}>
-            Detect clusters?
-          </Text>
-          <Switch
-            value={cluster}
-            onValueChange={val => setCluster(val)}
-            color="black"
-          />
-        </View>
-        <TextInput
-          mode="flat"
-          label="Weight"
-          placeholder="-1 if unknown"
-          keyboardType="numeric"
-          activeUnderlineColor="black"
-          onChangeText={value => setWeight(value)}
-          style={{
-            marginVertical: '10%',
-            paddingLeft: 10,
-            fontSize: 15,
-            backgroundColor: '#eae9e9',
-          }}
-        />
       </View>
       <Button
         icon="arrow-right-circle-outline"
