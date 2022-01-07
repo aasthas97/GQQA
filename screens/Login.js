@@ -59,6 +59,7 @@ const LoginScreen = ({navigation}) => {
             borderRadius: 10,
             marginVertical: 10,
             paddingLeft: 10,
+            fontSize: 15,
           }}
         />
         <TextInput
@@ -71,6 +72,7 @@ const LoginScreen = ({navigation}) => {
             borderRadius: 10,
             marginVertical: 10,
             paddingLeft: 10,
+            fontSize: 15,
           }}
         />
       </View>
