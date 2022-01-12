@@ -8,6 +8,7 @@ import {
   TextInput,
   Pressable,
 } from 'react-native';
+import globalStyle from '../utils/Style.js';
 
 const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -24,7 +25,7 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <ScrollView style={{backgroundColor: 'white', height: '100%'}}>
+    <ScrollView style={globalStyle.container}>
       <View style={{marginTop: '50%', marginLeft: '10%'}}>
         <Text style={{color: 'black', fontWeight: '700', fontSize: 40}}>
           Login
@@ -35,7 +36,6 @@ const LoginScreen = ({navigation}) => {
       </View>
       <View
         style={{
-          // borderWidth: 2,
           marginTop: '10%',
           marginLeft: '10%',
           marginRight: '10%',
@@ -43,38 +43,17 @@ const LoginScreen = ({navigation}) => {
         <TextInput
           placeholder="Username"
           onChangeText={value => setUsername(value)}
-          style={{
-            borderWidth: 4,
-            borderColor: '#eae9e9',
-            borderRadius: 10,
-            marginVertical: 10,
-            paddingLeft: 10,
-            fontSize: 15,
-          }}
+          style={styles.textInput}
         />
         <TextInput
           placeholder="Password"
           secureTextEntry={true}
           onChangeText={value => setPassword(value)}
-          style={{
-            borderWidth: 4,
-            borderColor: '#eae9e9',
-            borderRadius: 10,
-            marginVertical: 10,
-            paddingLeft: 10,
-            fontSize: 15,
-          }}
+          style={styles.textInput}
         />
       </View>
       <Pressable
-        style={{
-          marginTop: '15%',
-          marginLeft: '50%',
-          marginRight: '10%',
-          backgroundColor: '#eae9e9',
-          borderRadius: 10,
-          paddingVertical: 10,
-        }}
+        style={styles.button}
         onPress={() => {
           loginAuthenticate(username, password);
         }}>
@@ -93,8 +72,21 @@ const LoginScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  body: {
-    margin: 1,
+  textInput: {
+    borderWidth: 4,
+    borderColor: '#eae9e9',
+    borderRadius: 10,
+    marginVertical: 10,
+    paddingLeft: 10,
+    fontSize: 15,
+  },
+  button: {
+    marginTop: '15%',
+    marginLeft: '50%',
+    marginRight: '10%',
+    backgroundColor: '#eae9e9',
+    borderRadius: 10,
+    paddingVertical: 10,
   },
 });
 export default LoginScreen;
