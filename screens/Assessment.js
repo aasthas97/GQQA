@@ -2,6 +2,7 @@ import React, {useState, useCallback} from 'react';
 import {View, Text, ScrollView, RefreshControl} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {Button, HelperText, Switch, TextInput} from 'react-native-paper';
+import globalStyle from '../utils/Style';
 
 const Assessment = ({navigation}) => {
   const [dpi, setDpi] = useState();
@@ -94,17 +95,8 @@ const Assessment = ({navigation}) => {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
-      style={{backgroundColor: 'white'}}>
-      <Text
-        style={{
-          marginTop: '20%',
-          marginLeft: '10%',
-          color: 'black',
-          fontWeight: '500',
-          fontSize: 35,
-        }}>
-        Quality Analysis
-      </Text>
+      style={globalStyle.container}>
+      <Text style={globalStyle.formHeading}>Quality Analysis</Text>
       <View style={{marginTop: '10%', marginHorizontal: '10%'}}>
         <TextInput
           mode="flat"
@@ -112,12 +104,7 @@ const Assessment = ({navigation}) => {
           keyboardType="numeric"
           activeUnderlineColor="black"
           onChangeText={value => setDpi(value)}
-          style={{
-            marginVertical: 10,
-            paddingLeft: 10,
-            fontSize: 15,
-            backgroundColor: '#eae9e9',
-          }}
+          style={globalStyle.formInput}
         />
         <TextInput
           mode="flat"
@@ -126,12 +113,7 @@ const Assessment = ({navigation}) => {
           keyboardType="numeric"
           activeUnderlineColor="black"
           onChangeText={value => setWeight(value)}
-          style={{
-            marginTop: '5%',
-            paddingLeft: 10,
-            fontSize: 15,
-            backgroundColor: '#eae9e9',
-          }}
+          style={globalStyle.formInput}
         />
         <View
           style={{
@@ -139,42 +121,21 @@ const Assessment = ({navigation}) => {
             justifyContent: 'space-between',
             marginTop: '10%',
           }}>
-          <Text
-            style={{
-              fontSize: 22,
-              fontWeight: '500',
-              color: 'black',
-            }}>
-            Detect clusters?
-          </Text>
+          <Text style={globalStyle.formText}>Detect clusters?</Text>
           <Switch
             value={cluster}
             onValueChange={val => setCluster(val)}
             color="black"
           />
         </View>
-        <Text
-          style={{
-            marginTop: '8%',
-            fontSize: 22,
-            fontWeight: '500',
-            color: 'black',
-          }}>
-          Image
-        </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: '2%',
-            height: 70,
-          }}>
+        <Text style={[{marginTop: '8%'}, globalStyle.formText]}>Image</Text>
+        <View style={globalStyle.imageSelectionPanel}>
           <Button
             icon="camera"
             mode="contained"
             color="#eae9e9"
             accessibilityLabel="Take photo from camera"
-            style={{paddingVertical: 8, justifyContent: 'center'}}
+            style={globalStyle.imageSelectionButton}
             labelStyle={{fontSize: 15}}
             onPress={takePhotoFromCamera}>
             Camera
@@ -184,7 +145,7 @@ const Assessment = ({navigation}) => {
             mode="contained"
             color="#eae9e9"
             accessibilityLabel="Choose photo from gallery"
-            style={{paddingVertical: 8, justifyContent: 'center'}}
+            style={globalStyle.imageSelectionButton}
             labelStyle={{fontSize: 15}}
             onPress={chooseFromGallery}>
             Gallery

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, ScrollView, StyleSheet, Text} from 'react-native';
 import {Card, Paragraph, Avatar} from 'react-native-paper';
-import globalStyle from '../utils/Style.js';
+import globalStyle from '../utils/Style';
 
 const UserHome = ({navigation}) => {
   return (

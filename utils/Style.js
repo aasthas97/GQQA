@@ -2,63 +2,45 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
+    backgroundColor: 'white',
+    height: '100%',
   },
-
-  body: {
-    flex: 1,
-  },
-
-  header: {
-    flexDirection: 'row',
-    width: '100%',
-    height: '12%',
-    padding: 20,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#048BA8',
-  },
-
-  headingText: {
-    textAlign: 'center',
-    fontSize: 30,
-    marginTop: 20,
-    marginBottom: 5,
-    color: '#2F2F2F',
-    fontFamily: 'monospace',
-  },
-
-  bodyText: {
+  formHeading: {
+    marginTop: '20%',
+    marginLeft: '10%',
     color: 'black',
-    fontSize: 20,
-    fontFamily: 'monospace',
+    fontWeight: '500',
+    fontSize: 35,
+  },
+  formInput: {
+    marginVertical: '5%',
+    paddingLeft: 10,
+    fontSize: 15,
+    backgroundColor: '#eae9e9',
   },
 
-  bgcolor: {
-    backgroundColor: '#048BA8',
+  formText: {
+    fontSize: 22,
+    fontWeight: '500',
+    color: 'black',
   },
 
-  btn: {
-    alignItems: 'center',
+  imageSelectionPanel: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: '2%',
+    height: 70,
+  },
+  imageSelectionButton: {
+    paddingVertical: 8,
     justifyContent: 'center',
-    borderRadius: 4,
-    elevation: 5,
   },
 
-  btnText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-  },
-
-  input: {
-    width: '70%',
-    borderWidth: 2,
-    padding: 8,
-    fontSize: 17,
-    borderRadius: 5,
-    borderColor: '#2F2F2F',
-    marginVertical: 7,
+  tableHeader: {
+    textAlign: 'center',
+    padding: 5,
+    paddingBottom: 10,
+    color: 'black',
+    fontWeight: '600',
   },
 });

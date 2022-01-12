@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {Table, Row} from 'react-native-table-component';
+import globalStyle from '../utils/Style';
 
 export default DimensionResult = ({route}) => {
   const lengths = route.params['Length'];
@@ -15,18 +16,12 @@ export default DimensionResult = ({route}) => {
   }
 
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={globalStyle.container}>
       <Table style={{marginTop: '20%'}}>
         <Row
           data={['Grain', 'Length', 'Breadth', 'Perimeter', 'Area']}
           flexArr={[1.5, 2, 2, 2, 2]}
-          textStyle={{
-            textAlign: 'center',
-            padding: 5,
-            paddingBottom: 10,
-            color: 'black',
-            fontWeight: '600',
-          }}
+          textStyle={globalStyle.tableHeader}
         />
         {tableData.map((rowData, index) => (
           <Row

@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import {Table, Row} from 'react-native-table-component';
+import globalStyle from '../utils/Style';
 
 const ResultScreen = ({route}) => {
   const grainCount = route.params['grain count'];
@@ -17,18 +18,12 @@ const ResultScreen = ({route}) => {
   }
 
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <ScrollView style={globalStyle.container}>
       <Table style={{marginTop: '15%'}}>
         <Row
           data={['Grain Count', 'Thousand Grain Weight']}
           flexArr={[1, 2]}
-          textStyle={{
-            textAlign: 'center',
-            padding: 5,
-            paddingBottom: 10,
-            color: 'black',
-            fontWeight: '600',
-          }}
+          textStyle={globalStyle.tableHeader}
           style={{
             backgroundColor: '#eae9e9',
             borderTopWidth: 1,

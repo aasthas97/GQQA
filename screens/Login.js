@@ -8,7 +8,7 @@ import {
   TextInput,
   Pressable,
 } from 'react-native';
-import globalStyle from '../utils/Style.js';
+import globalStyle from '../utils/Style';
 
 const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
