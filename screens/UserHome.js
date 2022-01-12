@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, ScrollView, StyleSheet, Text} from 'react-native';
 import {Card, Paragraph, Avatar} from 'react-native-paper';
+import globalStyle from '../utils/Style.js';
 
 const UserHome = ({navigation}) => {
   return (
-    <View style={{backgroundColor: 'white', height: '100%'}}>
+    <ScrollView style={globalStyle.container}>
       {/* <View
         style={{
           backgroundColor: 'white',
@@ -35,14 +36,10 @@ const UserHome = ({navigation}) => {
           onPress={() => {
             navigation.navigate('Dimension');
           }}
-          style={{
-            backgroundColor: '#eae9e9',
-            marginTop: 20,
-            paddingVertical: 15,
-          }}>
+          style={styles.card}>
           <Card.Title title="Dimension Analysis" titleStyle={{fontSize: 25}} />
           <Card.Content>
-            <Paragraph style={{fontSize: 15, fontWeight: '500'}}>
+            <Paragraph style={styles.cardContent}>
               Get grain length, breadth, area and perimeter with a single click.
             </Paragraph>
           </Card.Content>
@@ -55,21 +52,29 @@ const UserHome = ({navigation}) => {
           onPress={() => {
             navigation.navigate('Assessment');
           }}
-          style={{
-            backgroundColor: '#eae9e9',
-            marginTop: 40,
-            paddingVertical: 15,
-          }}>
+          style={styles.card}>
           <Card.Title title="Quality Analysis" titleStyle={{fontSize: 25}} />
           <Card.Content>
-            <Paragraph style={{fontSize: 15, fontWeight: '500'}}>
+            <Paragraph style={styles.cardContent}>
               ML-based, automated grain quality assessment.
             </Paragraph>
           </Card.Content>
         </Card>
       </View>
-    </View>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#eae9e9',
+    marginTop: 40,
+    paddingVertical: 15,
+  },
+  cardContent: {
+    fontSize: 15,
+    fontWeight: '500',
+  },
+});
 
 export default UserHome;
