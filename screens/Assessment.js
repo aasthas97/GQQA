@@ -13,8 +13,8 @@ const Assessment = ({navigation}) => {
   const [refreshing, setRefreshing] = useState(false);
 
   function chooseFromGallery() {
-    launchImageLibrary({noData: true}, response => {
-      if (response) {
+    launchImageLibrary({saveToPhotos: false, mediaType: 'photo'}, response => {
+      if (response.assets) {
         // console.log(response);
         setImage(response);
       }
@@ -22,16 +22,11 @@ const Assessment = ({navigation}) => {
   }
 
   function takePhotoFromCamera() {
-    launchCamera({noData: true}, response => {
-      if (response) {
-        // console.log(response);
+    launchCamera({saveToPhotos: true, mediaType: 'photo'}, response => {
+      if (response.assets) {
         setImage(response);
       }
     });
-  }
-
-  function logOut() {
-    navigation.navigate('SignIn');
   }
 
   const onRefresh = useCallback(() => {
@@ -39,6 +34,7 @@ const Assessment = ({navigation}) => {
     setTimeout(() => {
       setRefreshing(false);
       setLoading(false);
+      setImage();
     }, 1000);
   });
 

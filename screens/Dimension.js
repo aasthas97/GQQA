@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {View, Text, RefreshControl, ScrollView, Alert} from 'react-native';
+import {View, Text, RefreshControl, ScrollView} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {Button, HelperText, TextInput} from 'react-native-paper';
 import globalStyle from '../utils/Style';
@@ -12,7 +12,7 @@ const Dimension = ({navigation}) => {
 
   function chooseFromGallery() {
     launchImageLibrary({saveToPhotos: false, mediaType: 'photo'}, response => {
-      if (response) {
+      if (response.assets) {
         setImage(response);
       }
     });
@@ -22,8 +22,6 @@ const Dimension = ({navigation}) => {
     launchCamera({saveToPhotos: true, mediaType: 'photo'}, response => {
       if (response.assets) {
         setImage(response);
-      } else {
-        Alert.alert(response);
       }
     });
   }
