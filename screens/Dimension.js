@@ -11,7 +11,7 @@ const Dimension = ({navigation}) => {
   const [refreshing, setRefreshing] = useState(false);
 
   function chooseFromGallery() {
-    launchImageLibrary({noData: true}, response => {
+    launchImageLibrary({saveToPhotos: false, mediaType: 'photo'}, response => {
       if (response) {
         setImage(response);
       }
@@ -19,9 +19,11 @@ const Dimension = ({navigation}) => {
   }
 
   function takePhotoFromCamera() {
-    launchCamera({noData: true}, response => {
-      if (response) {
+    launchCamera({saveToPhotos: true, mediaType: 'photo'}, response => {
+      if (response.assets) {
         setImage(response);
+      } else {
+        console.log(response);
       }
     });
   }
@@ -31,6 +33,7 @@ const Dimension = ({navigation}) => {
     setTimeout(() => {
       setRefreshing(false);
       setLoading(false);
+      setImage();
     }, 1000);
   });
 
@@ -67,7 +70,7 @@ const Dimension = ({navigation}) => {
 
     try {
       const response = await fetch(
-        'http://10.0.2.2:8000/dimension/',
+        'http://210.212.94.234/dimension/',
         requestOptions,
       );
       const json = await response.json();

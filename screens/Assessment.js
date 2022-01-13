@@ -79,7 +79,7 @@ const Assessment = ({navigation}) => {
     };
 
     try {
-      const response = await fetch('http://10.0.2.2:8000/', requestOptions);
+      const response = await fetch('http://210.212.94.234/', requestOptions);
       const json = await response.json();
       onRefresh();
       // console.log(json);
