@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {View, Text, RefreshControl, ScrollView} from 'react-native';
+import {View, Text, RefreshControl, ScrollView, Alert} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {Button, HelperText, TextInput} from 'react-native-paper';
 import globalStyle from '../utils/Style';
@@ -23,7 +23,7 @@ const Dimension = ({navigation}) => {
       if (response.assets) {
         setImage(response);
       } else {
-        console.log(response);
+        Alert.alert(response);
       }
     });
   }
