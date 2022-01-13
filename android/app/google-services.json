@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "868994372406",
+    "project_id": "gqqa-auth-49a87",
+    "storage_bucket": "gqqa-auth-49a87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868994372406:android:13c416d398b594068cd997",
+        "android_client_info": {
+          "package_name": "com.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868994372406-go7ihhe6fct2v6ci9kvkc0m37ku87f8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCQsuNMA9GavCHIMurzKl-b5GWt89sku8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868994372406-go7ihhe6fct2v6ci9kvkc0m37ku87f8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,28 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
-  Alert,
   ScrollView,
   StyleSheet,
   TextInput,
   Pressable,
 } from 'react-native';
+import {AuthContext} from '../navigation/AuthProvider';
 import globalStyle from '../utils/Style';
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  const loginAuthenticate = (username, password) => {
-    if (username == '' || password == '') {
-      Alert.alert('Please fill all fields');
-    } else if (username == 'indosaw' && password == 'indosaw') {
-      navigation.push('Home');
-    } else {
-      Alert.alert('Incorrect username or password');
-    }
-  };
+  const {login} = useContext(AuthContext);
 
   return (
     <ScrollView style={globalStyle.container}>
@@ -55,7 +46,7 @@ const LoginScreen = ({navigation}) => {
       <Pressable
         style={styles.button}
         onPress={() => {
-          loginAuthenticate(username, password);
+          login(username, password);
         }}>
         <Text
           style={{
