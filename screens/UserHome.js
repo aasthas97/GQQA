@@ -23,12 +23,12 @@ const UserHome = ({navigation}) => {
           }}
         />
       </View> */}
-      <View style={{marginTop: '10%', marginLeft: '10%'}}>
+      <View style={{marginTop: '20%', marginLeft: '10%'}}>
         <Text style={{color: 'black', fontWeight: '500', fontSize: 35}}>
           Welcome!
         </Text>
       </View>
-      <View style={{marginTop: '10%', marginLeft: '8%', marginRight: '8%'}}>
+      <View style={{marginTop: '5%', marginLeft: '8%', marginRight: '8%'}}>
         <Card
           mode="elevated"
           elevation={5}
