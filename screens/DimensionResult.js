@@ -10,8 +10,8 @@ export default DimensionResult = ({route}) => {
   const perimeters = route.params['Perimeter'];
   let tableData = [];
 
-  for (let i = 1; i < lengths.length; i++) {
-    let rowData = [i, lengths[i], breadths[i], areas[i], perimeters[i]];
+  for (let i = 0; i < lengths.length; i++) {
+    let rowData = [i + 1, lengths[i], breadths[i], areas[i], perimeters[i]];
     tableData.push(rowData);
   }
 
