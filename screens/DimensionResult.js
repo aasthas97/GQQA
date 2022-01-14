@@ -11,7 +11,7 @@ export default DimensionResult = ({route}) => {
   let tableData = [];
 
   for (let i = 0; i < lengths.length; i++) {
-    let rowData = [i + 1, lengths[i], breadths[i], areas[i], perimeters[i]];
+    let rowData = [i + 1, lengths[i], breadths[i], perimeters[i], areas[i]];
     tableData.push(rowData);
   }
 
