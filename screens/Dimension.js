@@ -76,6 +76,7 @@ const Dimension = ({navigation}) => {
       navigation.navigate('DimensionResult', json);
     } catch (error) {
       alert(error);
+      onRefresh();
     }
   };
 
