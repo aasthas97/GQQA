@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView, Text, StyleSheet} from 'react-native';
 import {Table, Row} from 'react-native-table-component';
 import globalStyle from '../utils/Style';
 
@@ -23,7 +23,10 @@ export default DimensionResult = ({route}) => {
 
   return (
     <ScrollView style={globalStyle.container}>
-      <Table style={{marginTop: '20%'}}>
+      <Text style={{marginTop: '10%', marginLeft: '3%', color: 'black'}}>
+        All measurements are in mm
+      </Text>
+      <Table style={{marginTop: '5%'}}>
         <Row
           data={['Grain', 'Length', 'Breadth', 'Perimeter', 'Area']}
           flexArr={[1.5, 2, 2, 2, 2]}
