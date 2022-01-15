@@ -97,7 +97,15 @@ const Dimension = ({navigation}) => {
           onChangeText={value => setDpi(value)}
           style={globalStyle.formInput}
         />
-        <Text style={[{marginTop: '10%'}, globalStyle.formText]}>Image</Text>
+        <TextInput
+          mode="flat"
+          label="Grain type"
+          keyboardType="numeric"
+          activeUnderlineColor="black"
+          onChangeText={value => setDpi(value)}
+          style={globalStyle.formInput}
+        />
+        <Text style={[{marginTop: '5%'}, globalStyle.formText]}>Image</Text>
         <View style={globalStyle.imageSelectionPanel}>
           <Button
             icon="camera"
@@ -131,7 +139,7 @@ const Dimension = ({navigation}) => {
           icon="arrow-right-circle-outline"
           loading={isLoading == true ? true : false}
           labelStyle={{fontSize: 50, color: 'black'}}
-          style={{marginTop: '30%', marginLeft: '80%'}}
+          style={{marginTop: '10%', marginLeft: '80%'}}
           onPress={checkForm}
         />
       </View>
