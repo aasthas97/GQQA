@@ -5,7 +5,7 @@ import {Button, HelperText, TextInput} from 'react-native-paper';
 import globalStyle from '../utils/Style';
 
 const Dimension = ({navigation}) => {
-  const [dpi, setDpi] = useState(72);
+  const [dpi, setDpi] = useState(700);
   const [image, setImage] = useState();
   const [isLoading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
