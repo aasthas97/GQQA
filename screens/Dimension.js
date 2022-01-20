@@ -3,6 +3,7 @@ import {View, Text, RefreshControl, ScrollView} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {Button, HelperText, TextInput} from 'react-native-paper';
 import globalStyle from '../utils/Style';
+import Header from '../components/Header';
 
 const Dimension = ({navigation}) => {
   const [dpi, setDpi] = useState(700);
@@ -87,6 +88,7 @@ const Dimension = ({navigation}) => {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
       style={globalStyle.container}>
+      <Header />
       <Text style={globalStyle.formHeading}>Dimension Analysis</Text>
       <View style={{marginTop: '10%', marginHorizontal: '10%'}}>
         <TextInput
