@@ -6,7 +6,7 @@ export default StyleSheet.create({
     height: '100%',
   },
   formHeading: {
-    marginTop: '8%',
+    marginTop: '5%',
     marginLeft: '10%',
     color: 'black',
     fontWeight: '500',
