@@ -1,42 +1,32 @@
-import React from 'react';
-import {StyleSheet, View, Image} from 'react-native';
-import GlobalStyle from '../utils/Style';
-import Icon from 'react-native-vector-icons/Feather';
+import React, {useContext} from 'react';
+import {View} from 'react-native';
+import {Button} from 'react-native-paper';
+import {AuthContext} from '../navigation/AuthProvider';
 
-const Header = ({signedIn, logOutFunc, headerHeight}) => {
+const Header = ({}) => {
+  const {logout} = useContext(AuthContext);
   return (
-    <View style={[GlobalStyle.header, {height: headerHeight}]}>
-      <Image
-        source={require('../assets/grain-logo.jpg')}
-        style={LocalStyle.img}
+    <View
+      style={{
+        backgroundColor: 'white',
+        height: '15%',
+        flexDirection: 'row-reverse',
+      }}>
+      <Button
+        color="grey"
+        dark={false}
+        icon="logout-variant"
+        mode="text"
+        accessibilityLabel="Sign out"
+        style={{
+          marginTop: '8%',
+          marginRight: '5%',
+          backgroundColor: 'white',
+        }}
+        labelStyle={{fontSize: 30}}
+        onPress={() => logout()}
       />
-      {signedIn ? (
-        <Icon.Button
-          name="log-out"
-          backgroundColor="#048BA8"
-          size={25}
-          onPress={logOutFunc}></Icon.Button>
-      ) : null}
     </View>
   );
 };
-
-Header.defaultProps = {
-  headerHeight: '12%',
-};
-
-const LocalStyle = StyleSheet.create({
-  headerText: {
-    fontSize: 20,
-    color: '#F4B942',
-    fontWeight: 'bold',
-  },
-
-  img: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-  },
-});
-
 export default Header;
