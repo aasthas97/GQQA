@@ -1,12 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {View, ScrollView, StyleSheet, Text} from 'react-native';
-import {Card, Paragraph, Button} from 'react-native-paper';
+import {Card, Paragraph} from 'react-native-paper';
 import globalStyle from '../utils/Style';
-import {AuthContext} from '../navigation/AuthProvider';
 import Header from '../components/Header';
 
 const UserHome = ({navigation}) => {
-  const {logout} = useContext(AuthContext);
   return (
     <ScrollView style={globalStyle.container}>
       <Header />
