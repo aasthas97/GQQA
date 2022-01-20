@@ -2,6 +2,7 @@ import React, {useState, useCallback} from 'react';
 import {View, Text, ScrollView, RefreshControl} from 'react-native';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {Button, HelperText, Switch, TextInput} from 'react-native-paper';
+import Header from '../components/Header';
 import globalStyle from '../utils/Style';
 
 const Assessment = ({navigation}) => {
@@ -92,8 +93,9 @@ const Assessment = ({navigation}) => {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
       style={globalStyle.container}>
+      <Header />
       <Text style={globalStyle.formHeading}>Quality Analysis</Text>
-      <View style={{marginTop: '10%', marginHorizontal: '10%'}}>
+      <View style={{marginTop: '7%', marginHorizontal: '10%'}}>
         <TextInput
           mode="flat"
           label="DPI (required)"
