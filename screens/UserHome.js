@@ -1,29 +1,35 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, ScrollView, StyleSheet, Text} from 'react-native';
-import {Card, Paragraph, Avatar} from 'react-native-paper';
+import {Card, Paragraph, Button} from 'react-native-paper';
 import globalStyle from '../utils/Style';
+import {AuthContext} from '../navigation/AuthProvider';
 
 const UserHome = ({navigation}) => {
+  const {logout} = useContext(AuthContext);
   return (
     <ScrollView style={globalStyle.container}>
-      {/* <View
+      <View
         style={{
           backgroundColor: 'white',
-          height: '10%',
+          height: '15%',
           flexDirection: 'row-reverse',
         }}>
-        <Avatar.Icon
-          size={45}
-          color="black"
+        <Button
+          color="grey"
+          dark={false}
           icon="logout-variant"
+          mode="text"
+          accessibilityLabel="Sign out"
           style={{
-            marginTop: 20,
-            marginRight: '10%',
+            marginTop: '8%',
+            marginRight: '5%',
             backgroundColor: 'white',
           }}
+          labelStyle={{fontSize: 30}}
+          onPress={() => logout()}
         />
-      </View> */}
-      <View style={{marginTop: '20%', marginLeft: '10%'}}>
+      </View>
+      <View style={{marginTop: '8%', marginLeft: '10%'}}>
         <Text style={{color: 'black', fontWeight: '500', fontSize: 35}}>
           Welcome!
         </Text>
