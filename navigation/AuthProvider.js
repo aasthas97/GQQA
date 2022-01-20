@@ -22,7 +22,7 @@ export const AuthProvider = ({children}) => {
             await auth().createUserWithEmailAndPassword(username, password);
           } catch (e) {
             // console.log(e);
-            Alert.alert(e);'
+            Alert.alert(e);
           }
         },
         logout: async () => {
