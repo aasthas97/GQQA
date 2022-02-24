@@ -10,7 +10,11 @@ Tested only on Android so far, but can be customized for iOS easily.
 2. React Native 0.66.3
 3. Java SE Development Kit (JDK) >= 11
 4. Firebase >= 9.6.2
-5. Android Studio 
+5. Android Studio
+6. [React Native Image Picker](https://github.com/react-native-image-picker/react-native-image-picker)
+7. [React Native Paper](https://callstack.github.io/react-native-paper/)
+
+(For complete list of packages and utilities, see ``package.json```)
 
 ## Issues and To-Do
 1. DPI Calibration
