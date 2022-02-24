@@ -34,3 +34,6 @@ Once the debug assembly is complete, the APK file should be available in the ```
 
 # License
 The software is the property of Osaw Industrial Products Pvt. Ltd. Distribution to third parties without the express consent of the company is illegal.
+
+# Author(s)
+1. Aastha Sharma
